@@ -1,18 +1,24 @@
-document.getElementById('convertButton').addEventListener('click', function() {
-  const rot = parseInt(document.getElementById('rotSelect').value);
+document.getElementById('encryptButton').addEventListener('click', function() {
   const inputText = document.getElementById('inputText').value;
+  const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+  const numColumns = columnOrder.length;
   let outputText = '';
 
-  for (let i = 0; i < inputText.length; i++) {
-      let ascii = inputText.charCodeAt(i);
+  // Crear una matriz para almacenar las columnas
+  let columns = [];
+  for (let i = 0; i < numColumns; i++) {
+      columns.push([]);
+  }
 
-      if (ascii >= 65 && ascii <= 90) {
-          outputText += String.fromCharCode((ascii - 65 + rot) % 26 + 65);
-      } else if (ascii >= 97 && ascii <= 122) {
-          outputText += String.fromCharCode((ascii - 97 + rot) % 26 + 97);
-      } else {
-          outputText += inputText.charAt(i);
-      }
+  // Llenar las columnas con los caracteres del mensaje original
+  for (let i = 0; i < inputText.length; i++) {
+      columns[i % numColumns].push(inputText[i]);
+  }
+
+  // Leer las columnas en el orden establecido y concatenar los caracteres
+  for (let i = 0; i < numColumns; i++) {
+      let columnIndex = columnOrder[i] - 1;
+      outputText += columns[columnIndex].join('');
   }
 
   document.getElementById('outputText').value = outputText;
