@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROT13 Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl mb-4">ROT13 Clone</h1>
+        <select id="rotSelect" class="mb-4 p-2 border border-gray-300 rounded">
+            <option value="13" selected>ROT13</option>
+            <!-- Agrega aquí más opciones si es necesario -->
+        </select>
+        <textarea id="inputText" class="w-full p-2 border border-gray-300 rounded" rows="10"></textarea>
+        <button id="convertButton" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Convertir</button>
+        <textarea id="outputText" class="mt-4 w-full p-2 border border-gray-300 rounded" rows="10" readonly></textarea>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
