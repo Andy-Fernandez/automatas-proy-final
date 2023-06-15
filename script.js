@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('encryptButton').addEventListener('click', function() {
     const inputText = document.getElementById('inputText').value;
-    const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+    const fecha = document.getElementById('fecha').value;
+    const columnOrder = enumerarFecha(fecha).split(',').map(Number);
+    //const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+    document.getElementById('columnOrder').value = "";
+    document.getElementById('columnOrder').value = columnOrder.join(',');
     const numColumns = columnOrder.length;
     let outputText = '';
 
@@ -27,7 +31,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('decryptButton').addEventListener('click', function() {
         const inputText = document.getElementById('inputText').value;
-        const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+        const fecha = document.getElementById('fecha').value;
+        const columnOrder = enumerarFecha(fecha).split(',').map(Number);
+        //const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+        document.getElementById('columnOrder').value = "";
+        document.getElementById('columnOrder').value = columnOrder.join(',');
         const numColumns = columnOrder.length;
         let outputText = '';
 
@@ -81,4 +89,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
         }
     });
+    function enumerarFecha(fecha) {
+        // Descomponemos la fecha en un array de caracteres
+        let chars = fecha.split('');
+        let enumeracion = Array(chars.length).fill(0);
+        let counter = 1;
+
+        // Recorremos los números del 0 al 9
+        for(let i = 0; i <= 9; i++) {
+            // Recorremos los caracteres de la fecha
+            for(let j = 0; j < chars.length; j++) {
+                // Si encontramos el número y no es una barra
+                if(chars[j] == i && chars[j] != '/') {
+                    // Asignamos el contador a la posición correspondiente en la enumeración
+                    enumeracion[j] = counter;
+                    // Incrementamos el contador
+                    counter++;
+                }
+            }
+        }
+
+        // Filtramos la enumeración para excluir las barras (representadas por 0's)
+        let enumeracionFiltrada = enumeracion.filter(num => num != 0);
+
+        // Retornamos la enumeración separada por comas
+        return enumeracionFiltrada.join(',');
+    }
 });
