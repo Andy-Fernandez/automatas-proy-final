@@ -115,4 +115,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         // Retornamos la enumeración separada por comas
         return enumeracionFiltrada.join(',');
     }
+    document.getElementById('fechaButton').addEventListener('click', function() {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0!
+        let aa = String(today.getFullYear()).substr(-2);
+        let fechaHoy = dd + '/' + mm + '/' + aa;
+    
+        document.getElementById('fecha').value = fechaHoy;
+    });
+    
 });
