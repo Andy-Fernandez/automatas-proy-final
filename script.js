@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('encryptButton').addEventListener('click', function() {
-    const inputText = document.getElementById('inputText').value;
+    let inputText = document.getElementById('inputText').value;
     const fecha = document.getElementById('fecha').value;
     let columnOrder;
     if (fecha == "") {
         columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
     }else{
+        while(inputText.length < 6) {
+            inputText += '*';
+        }
         columnOrder = enumerarFecha(fecha).split(',').map(Number);
         document.getElementById('columnOrder').value = "";
         document.getElementById('columnOrder').value = columnOrder.join(',');
@@ -72,8 +75,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
             }
         }
-
-        document.getElementById('outputText').value = outputText;
+        function eliminarAsteriscos(outputText) {
+            return outputText.replace(/\*/g, '');
+        }
+        document.getElementById('outputText').value = eliminarAsteriscos(outputText);
     });
     const themeToggleButton = document.getElementById('themeToggleButton');
 
@@ -129,8 +134,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let mm = String(today.getMonth() + 1).padStart(2, '0'); // Enero es 0!
         let aa = String(today.getFullYear()).substr(-2);
         let fechaHoy = dd + '/' + mm + '/' + aa;
-    
         document.getElementById('fecha').value = fechaHoy;
     });
-    
 });
