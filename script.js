@@ -59,4 +59,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         document.getElementById('outputText').value = outputText;
     });
+    const themeToggleButton = document.getElementById('themeToggleButton');
+
+    themeToggleButton.addEventListener('click', () => {
+        const body = document.body;
+        if (body.classList.contains('bg-gray-100')) {
+            // Si actualmente estamos en el modo claro, cambiamos al oscuro
+            body.classList.remove('bg-gray-100', 'text-gray-900');
+            body.classList.add('bg-gray-900', 'text-gray-100');
+            document.querySelectorAll('.border-gray-300').forEach(el => {
+                el.classList.remove('border-gray-300', 'bg-gray-100', 'text-gray-900');
+                el.classList.add('border-gray-700', 'bg-gray-800', 'text-gray-300');
+            });
+        } else {
+            // Si actualmente estamos en el modo oscuro, cambiamos al claro
+            body.classList.remove('bg-gray-900', 'text-gray-100');
+            body.classList.add('bg-gray-100', 'text-gray-900');
+            document.querySelectorAll('.border-gray-700').forEach(el => {
+                el.classList.remove('border-gray-700', 'bg-gray-800', 'text-gray-300');
+                el.classList.add('border-gray-300', 'bg-gray-100', 'text-gray-900');
+            });
+        }
+    });
 });
