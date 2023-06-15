@@ -2,10 +2,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('encryptButton').addEventListener('click', function() {
     const inputText = document.getElementById('inputText').value;
     const fecha = document.getElementById('fecha').value;
-    const columnOrder = enumerarFecha(fecha).split(',').map(Number);
-    //const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
-    document.getElementById('columnOrder').value = "";
-    document.getElementById('columnOrder').value = columnOrder.join(',');
+    let columnOrder;
+    if (fecha == "") {
+        columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+    }else{
+        columnOrder = enumerarFecha(fecha).split(',').map(Number);
+        document.getElementById('columnOrder').value = "";
+        document.getElementById('columnOrder').value = columnOrder.join(',');
+    }
     const numColumns = columnOrder.length;
     let outputText = '';
 
@@ -32,10 +36,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('decryptButton').addEventListener('click', function() {
         const inputText = document.getElementById('inputText').value;
         const fecha = document.getElementById('fecha').value;
-        const columnOrder = enumerarFecha(fecha).split(',').map(Number);
-        //const columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
-        document.getElementById('columnOrder').value = "";
-        document.getElementById('columnOrder').value = columnOrder.join(',');
+        let columnOrder;
+        if (fecha == "") {
+            columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+        }else{
+            columnOrder = enumerarFecha(fecha).split(',').map(Number); // eliminamos 'const'
+            document.getElementById('columnOrder').value = "";
+            document.getElementById('columnOrder').value = columnOrder.join(',');
+        }
         const numColumns = columnOrder.length;
         let outputText = '';
 
