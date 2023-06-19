@@ -6,14 +6,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (fecha == "") {
         columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
     }else{
-        while(inputText.length < 6) {
-            inputText += '*';
-        }
         columnOrder = enumerarFecha(fecha).split(',').map(Number);
         document.getElementById('columnOrder').value = "";
         document.getElementById('columnOrder').value = columnOrder.join(',');
     }
     const numColumns = columnOrder.length;
+    while(inputText.length % numColumns != 0) {
+        inputText += ' ';
+    }
     let outputText = '';
 
     // Crear una matriz para almacenar las columnas
