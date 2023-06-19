@@ -1,1 +1,1 @@
-# automatas-proy-final
+Este programa te permite cifrar mensajes de una manera única. Simplemente introduce un mensaje y una fecha, como 'Mensaje secreto' y '19-06-20', y el programa cifrará tu mensaje utilizando la fecha proporcionada. Es una forma divertida y segura de enviar mensajes que solo pueden ser descifrados con la fecha correcta.
