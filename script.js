@@ -1,39 +1,39 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('encryptButton').addEventListener('click', function() {
-    let inputText = document.getElementById('inputText').value;
-    const fecha = document.getElementById('fecha').value;
-    let columnOrder;
-    if (fecha == "") {
-        columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
-    }else{
-        columnOrder = enumerarFecha(fecha).split(',').map(Number);
-        document.getElementById('columnOrder').value = "";
-        document.getElementById('columnOrder').value = columnOrder.join(',');
-    }
-    const numColumns = columnOrder.length;
-    while(inputText.length % numColumns != 0) {
-        inputText += ' ';
-    }
-    let outputText = '';
+        let inputText = document.getElementById('inputText').value;
+        const fecha = document.getElementById('fecha').value;
+        let columnOrder;
+        if (fecha == "") {
+            columnOrder = document.getElementById('columnOrder').value.split(',').map(Number);
+        }else{
+            columnOrder = enumerarFecha(fecha).split(',').map(Number);
+            document.getElementById('columnOrder').value = "";
+            document.getElementById('columnOrder').value = columnOrder.join(',');
+        }
+        const numColumns = columnOrder.length;
+        while(inputText.length % numColumns != 0) {
+            inputText += ' ';
+        }
+        let outputText = '';
 
-    // Crear una matriz para almacenar las columnas
-    let columns = [];
-    for (let i = 0; i < numColumns; i++) {
-        columns.push([]);
-    }
+        // Crear una matriz para almacenar las columnas
+        let columns = [];
+        for (let i = 0; i < numColumns; i++) {
+            columns.push([]);
+        }
 
-    // Llenar las columnas con los caracteres del mensaje original
-    for (let i = 0; i < inputText.length; i++) {
-        columns[i % numColumns].push(inputText[i]);
-    }
+        // Llenar las columnas con los caracteres del mensaje original
+        for (let i = 0; i < inputText.length; i++) {
+            columns[i % numColumns].push(inputText[i]);
+        }
 
-    // Leer las columnas en el orden establecido y concatenar los caracteres
-    for (let i = 0; i < numColumns; i++) {
-        let columnIndex = columnOrder[i] - 1;
-        outputText += columns[columnIndex].join('');
-    }
+        // Leer las columnas en el orden establecido y concatenar los caracteres
+        for (let i = 0; i < numColumns; i++) {
+            let columnIndex = columnOrder[i] - 1;
+            outputText += columns[columnIndex].join('');
+        }
 
-    document.getElementById('outputText').value = outputText;
+        document.getElementById('outputText').value = outputText;
     });
 
     document.getElementById('decryptButton').addEventListener('click', function() {
