@@ -10,11 +10,12 @@
         .bg-blue-500 { background-color: #4299e1; }
         .bg-green-500 { background-color: #48bb78; }
         .border-gray-300 { border-color: #2d3748; }
+        .bg-gray-700 { background-color: #4a5568; } /* color de fondo más oscuro para el campo de salida */
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
     <div class="container mx-auto p-4">
-        <h1 class="text-4xl mb-4">Cifrado de Transposicion</h1>
+        <h1 class="text-4xl mb-4">Cifrado de Columnas</h1>
         <!-- El botón para cambiar el modo (añadir esto al principio del div.container) -->
         <div class="flex justify-end">
             <button id="themeToggleButton" class="px-4 py-2 bg-gray-300 text-black rounded">Cambiar Modo</button>
@@ -40,8 +41,10 @@
         </div>
         <div class="mt-4">
             <label for="fecha">Fecha:</label>
-            <input id="fecha" class="w-full p-2 border border-gray-300 rounded bg-gray-800 text-gray-300" type="text" placeholder="Introduzca la fecha (ejemplo: 28/06/00)">
-            <button id="fechaButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Insertar fecha actual</button>
+            <div class="flex items-center">
+                <input id="fecha" class="flex-grow p-2 border border-gray-300 rounded bg-gray-800 text-gray-300" type="text" placeholder="Introduzca la fecha (ejemplo: 28/06/00)">
+                <button id="fechaButton" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Insertar fecha actual</button>
+            </div>
         </div>
         <div class="mt-4">
             <label for="columnOrder">Orden de las columnas:</label>
@@ -53,7 +56,8 @@
         </div>
         <div class="mt-4">
             <label for="outputText">Mensaje cifrado/descifrado:</label>
-            <textarea id="outputText" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-gray-300" rows="10" readonly></textarea>
+            <textarea id="outputText" class="output-field w-full p-2 border border-gray-700 rounded bg-gray-700 text-gray-300" rows="10" readonly></textarea>
+            <button id="copyButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Copiar al portapapeles</button>
         </div>
     </div>
     <script src="script.js"></script>

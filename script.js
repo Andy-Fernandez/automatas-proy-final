@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 el.classList.add('border-gray-300', 'bg-gray-100', 'text-gray-900');
             });
         }
+        var outputFields = document.getElementsByClassName('output-field');
+        for (var i = 0; i < outputFields.length; i++) {
+            if (body.classList.contains('bg-gray-100')) {
+                outputFields[i].style.backgroundColor = '#ffffff'; // Color de fondo para el modo claro
+                outputFields[i].style.color = '#000000'; // Color de texto para el modo claro
+            } else {
+                outputFields[i].style.backgroundColor = '#4a5568'; // Color de fondo para el modo oscuro
+                outputFields[i].style.color = '#ffffff'; // Color de texto para el modo oscuro
+            }
+        }
     });
     function enumerarFecha(fecha) {
         // Descomponemos la fecha en un array de caracteres
@@ -136,4 +146,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let fechaHoy = dd + '/' + mm + '/' + aa;
         document.getElementById('fecha').value = fechaHoy;
     });
+    document.getElementById('copyButton').addEventListener('click', function() {
+        var outputText = document.getElementById('outputText');
+        outputText.select();
+        document.execCommand('copy');
+    });
+    
 });
