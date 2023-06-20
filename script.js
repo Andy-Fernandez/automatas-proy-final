@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         for (let i = 0; i < inputText.length; i++) {
             columns[i % numColumns].push(inputText[i]);
         }
+        console.log(columns);
 
         // Leer las columnas en el orden establecido y concatenar los caracteres
         for (let i = 0; i < numColumns; i++) {
@@ -34,8 +35,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
         document.getElementById('outputText').value = outputText;
-    });
 
+        // Limpiar las pilas
+        for (let i = 1; i <= 6; i++) {
+            document.getElementById(`pile${i}`).textContent = '';
+        }
+
+        // Rellenar las pilas con datos de columnas
+        for (let i = 0; i < columns.length; i++) {
+            let pileElement = document.getElementById(`pile${i + 1}`);
+            //columns[i] = columns[i].reverse();  // Revertir el orden de los elementos en la columna
+            pileElement.innerHTML = columns[i].join('<br>');
+        }
+    });
     document.getElementById('decryptButton').addEventListener('click', function() {
         const inputText = document.getElementById('inputText').value;
         const fecha = document.getElementById('fecha').value;

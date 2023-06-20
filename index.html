@@ -16,29 +16,21 @@
 <body class="bg-gray-900 text-gray-100">
     <div class="container mx-auto p-4">
         <h1 class="text-4xl mb-4">Cifrado de Columnas</h1>
-        <!-- El botón para cambiar el modo (añadir esto al principio del div.container) -->
         <div class="flex justify-end">
             <button id="themeToggleButton" class="px-4 py-2 bg-gray-300 text-black rounded">Cambiar Modo</button>
         </div>
-        <div class="flex flex-col md:flex-row">
-            <div class="flex-grow">
-              <h2 class="text-xl mb-2">Nombre: Univ. Pablo Andres Fernandez Cari</h2>
-            </div>
-            <div class="flex-grow">
-              <h2 class="text-xl mb-2">Materia: INF - 154</h2>
-            </div>
-        </div>
         <p class="mt-4 text-lg">
-            Bienvenido a esta herramienta de cifrado de transposición. Aquí puedes cifrar y descifrar mensajes utilizando el método de cifrado de columnas. Para comenzar, sigue los pasos a continuación:
+            Bienvenido a esta herramienta de cifrado de columnas. Aquí puedes cifrar y descifrar mensajes.
         </p>
         <ol class="list-decimal list-inside">
-            <li>Introduce tu mensaje en el cuadro de texto de "Mensaje original" y una fecha para cifrar o decifrar un mensaje. (El 'orden de las columnas' se calcula automaticamente)</li>
-            <li>Puede presionar "Insertar fecha actual" para usar la fecha de hoy y también introducir el orden de las columnas.</li>
+            <li>Introduce un mesaje y una fecha. (Puede presionar "Insertar fecha actual" para usar la fecha de hoy)</li>
+            <li>Oprime "Cifar" o "Decifrar" y ¡Listo!. (El 'orden de las columnas' se calcula automaticamente)</li>
+            <ol>Para usar la fecha de hoy o también introducir el orden de las columnas.</ol>
         </ol>
         <div class="flex flex-col md:flex-row">
             <div class="mt-4 flex-grow pr-4">
                 <label for="inputText">Mensaje original:</label>
-                <textarea id="inputText" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-gray-300" rows="10"></textarea>
+                <textarea id="inputText" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-gray-300" rows="7"></textarea>
             </div>
             <div class="flex-grow">
                 <div class="mt-4">
@@ -58,10 +50,65 @@
                 </div>
             </div>
         </div>
-        <div class="mt-4">
-            <label for="outputText">Mensaje cifrado/descifrado:</label>
-            <textarea id="outputText" class="output-field w-full p-2 border border-gray-700 rounded bg-gray-700 text-gray-300" rows="10" readonly></textarea>
-            <button id="copyButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Copiar al portapapeles</button>
+        <div class="flex flex-col md:flex-row">
+            <div class="mt-4 flex-grow pr-4">
+                <div class="mt-4">
+                    <label for="numberText">Primer paso:</label>
+                    <textarea id="numberText" class="output-field w-full p-2 border border-gray-700 rounded bg-gray-700 text-gray-300" rows="3" readonly></textarea>
+                </div>
+                <label for="outputText">Mensaje cifrado/descifrado:</label>
+                <textarea id="outputText" class="output-field w-full p-2 border border-gray-700 rounded bg-gray-700 text-gray-300" rows="7" readonly></textarea>
+                <button id="copyButton" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Copiar al portapapeles</button>
+            </div>
+            <div>
+                <div id="columnsContainer" class="flex flex-wrap mt-4">
+                    <div class="w-1/6 px-2 py-2">
+                      <div>P1</div>
+                      <div id="pile1" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 1 -->
+                      </div>
+                    </div>
+                    <div class="w-1/6 px-2 py-2">
+                        <div>P2</div>
+                      <div id="pile2" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 2 -->
+                      </div>
+                    </div>
+                    <div class="w-1/6 px-2 py-2">
+                        <div>P3</div>
+                      <div id="pile3" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 3 -->
+                      </div>
+                    </div>
+                    <div class="w-1/6 px-2 py-2">
+                        <div>P4</div>
+                      <div id="pile4" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 4 -->
+                      </div>
+                    </div>
+                    <div class="w-1/6 px-2 py-2">
+                        <div>P5</div>
+                      <div id="pile5" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 5 -->
+                      </div>
+                    </div>
+                    <div class="w-1/6 px-2 py-2">
+                        <div>P6</div>
+                      <div id="pile6" class="p-2 border border-gray-200 rounded">
+                        <!-- Aquí van los datos de la pila 6 -->
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="flex flex-col md:flex-row">
+            <div class="flex-grow">
+              <h2 class="text-xl mb-2">Nombre: Univ. Pablo Andres Fernandez Cari</h2>
+            </div>
+            <div class="flex-grow">
+              <h2 class="text-xl mb-2">Materia: INF - 154</h2>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
