@@ -27,6 +27,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             columns[i % numColumns].push(inputText[i]);
         }
         console.log(columns);
+        // Agregar aquí el nuevo código
+        let numberedText = '';
+        for (let i = 0; i < inputText.length; i++) {
+            numberedText += inputText[i] + (i % numColumns + 1);
+        }
+
+        numberedText = numberedText.split('').reverse().join('');
+
+        document.getElementById('numberText').value = numberedText;
+
 
         // Leer las columnas en el orden establecido y concatenar los caracteres
         for (let i = 0; i < numColumns; i++) {
